@@ -3,43 +3,37 @@
 <head>
   <title>Mon Chat</title>
   <style>
-.sent {
-  background: #d1e7dd;
-  padding: 8px;
-  margin: 5px;
-  border-radius: 10px;
-  text-align: right;
-  max-width: 70%;
-  margin-left: auto;
-}
+    .sent {
+      background: #d1e7dd;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 10px;
+      text-align: right;
+      max-width: 70%;
+      margin-left: auto;
+    }
 
-.bot {
-  background: #f8d7da;
-  padding: 8px;
-  margin: 5px;
-  border-radius: 10px;
-  text-align: left;
-  max-width: 70%;
-}
-
-</style>
+    .bot {
+      background: #f8d7da;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 10px;
+      text-align: left;
+      max-width: 70%;
+    }
   </style>
 </head>
 
 <body>
 
-
 <h2>💬 Mon Chat</h2>
 
-<!-- 👤 NOM EN HAUT -->
 <input type="text" id="username" placeholder="Ton nom">
-
-<!-- 💬 MESSAGE -->
 <div id="chat"></div>
 
 <input type="text" id="message" placeholder="Écris un message">
-
 <button onclick="sendMessage()">Envoyer</button>
+
 <script>
 function sendMessage() {
   let msg = document.getElementById("message").value;
@@ -49,7 +43,6 @@ function sendMessage() {
 
     let chat = document.getElementById("chat");
 
-    // 👤 message utilisateur
     let userDiv = document.createElement("div");
     userDiv.className = "sent";
     userDiv.innerText = name + ": " + msg;
@@ -57,7 +50,6 @@ function sendMessage() {
 
     document.getElementById("message").value = "";
 
-    // 🤖 bot
     setTimeout(() => {
       let botDiv = document.createElement("div");
       botDiv.className = "bot";
