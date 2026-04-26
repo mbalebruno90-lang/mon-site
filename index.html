@@ -1,79 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bruno Services</title>
+  <title>Mon Chat</title>
+  <style>
+.sent {
+  background: #d1e7dd;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 10px;
+  text-align: right;
+  max-width: 70%;
+  margin-left: auto;
+}
 
-    <style>
-        body {
-            font-family: Arial;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
+.bot {
+  background: #f8d7da;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 70%;
+}
 
-        .box {
-            background: white;
-            margin: 60px auto;
-            padding: 25px;
-            width: 85%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #4facfe;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #555;
-        }
-
-        button {
-            background-color: #25D366;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #1ebe5d;
-        }
-    </style>
+</style>
+  </style>
 </head>
 
 <body>
 
-<div class="box">
 
-    <img src="profil.jpg">
+<h2>💬 Mon Chat</h2>
 
-    <h1>Bruno - Développeur Web</h1>
+<!-- 👤 NOM EN HAUT -->
+<input type="text" id="username" placeholder="Ton nom">
 
-    <p>Je crée des sites web modernes et professionnels.</p>
+<!-- 💬 MESSAGE -->
+<div id="chat"></div>
 
-    <h3>Nos services :</h3>
-    <p>✔ Création de sites web</p>
-    <p>✔ Design moderne</p>
-    <p>✔ Assistance informatique</p>
+<input type="text" id="message" placeholder="Écris un message">
 
-    <a href="https://wa.me/243844941629?text=Bonjour%20Bruno%2C%20je%20veux%20un%20site%20web">
-        <button>Me contacter sur WhatsApp</button>
-    </a>
+<button onclick="sendMessage()">Envoyer</button>
+<script>
+function sendMessage() {
+  let msg = document.getElementById("message").value;
+  let name = document.getElementById("username").value;
 
-</div>
+  if (msg.trim() !== "") {
+
+    let chat = document.getElementById("chat");
+
+    // 👤 message utilisateur
+    let userDiv = document.createElement("div");
+    userDiv.className = "sent";
+    userDiv.innerText = name + ": " + msg;
+    chat.appendChild(userDiv);
+
+    document.getElementById("message").value = "";
+
+    // 🤖 bot
+    setTimeout(() => {
+      let botDiv = document.createElement("div");
+      botDiv.className = "bot";
+      botDiv.innerText = "Bot: message reçu 👍";
+      chat.appendChild(botDiv);
+    }, 1000);
+  }
+}
+</script>
 
 </body>
 </html>
